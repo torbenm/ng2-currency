@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "global": "^4.3.2",
+    "n": "^2.1.8"
+  },
+  "name": "ng2-currency",
+  "version": "0.0.0",
+  "description": "Angular2+ directives for currencies",
+  "main": "index.ts",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/torbenm/ng2-currency.git"
+  },
+  "keywords": [
+    "angular",
+    "ng",
+    "currency"
+  ],
+  "author": "torbenm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/torbenm/ng2-currency/issues"
+  },
+  "homepage": "https://github.com/torbenm/ng2-currency#readme"
+}
