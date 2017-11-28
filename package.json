@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/torbenm/ng2-currency#readme",
   "dependencies": {
+    "@angular/common": "^5.0.3",
     "@angular/core": "^5.0.3",
     "rxjs": "^5.5.2",
     "standard-version": "^4.2.0",

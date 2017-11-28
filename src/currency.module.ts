@@ -1,11 +1,17 @@
 import { CurrencyPipe } from './currency.pipe';
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CurrencyInputComponent } from './currency.input.component';
 
 let publicComponents = [
-    CurrencyPipe
+    CurrencyPipe,
+    CurrencyInputComponent
 ];
 
 @NgModule({
+    imports: [
+        CommonModule
+    ],
     declarations: [
         ...publicComponents
     ],
@@ -13,5 +19,4 @@ let publicComponents = [
         ...publicComponents
     ]
 })
-export class CurrencyModule {
-}
+export class CurrencyModule { }
