@@ -1,32 +1,32 @@
 {
-    "name": "ng2-currency",
-    "version": "0.0.0",
-    "description": "Angular2+ directives for currencies",
-    "main": "index.ts",
-    "devDependencies": {},
-    "scripts": {
-        "release": "node ./node_modules/standard-version/bin/cli.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/torbenm/ng2-currency.git"
-    },
-    "keywords": [
-        "angular",
-        "ng",
-        "currency"
-    ],
-    "author": "torbenm",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/torbenm/ng2-currency/issues"
-    },
-    "homepage": "https://github.com/torbenm/ng2-currency#readme",
-    "dependencies": {
-        "@angular/core": "^5.0.3",
-        "rxjs": "^5.5.2",
-        "standard-version": "^4.2.0",
-        "typescript": "^2.6.2",
-        "zone.js": "^0.8.18"
-    }
+  "name": "ng2-currency",
+  "version": "0.0.1",
+  "description": "Angular2+ directives for currencies",
+  "main": "index.ts",
+  "devDependencies": {},
+  "scripts": {
+    "release": "node ./node_modules/standard-version/bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/torbenm/ng2-currency.git"
+  },
+  "keywords": [
+    "angular",
+    "ng",
+    "currency"
+  ],
+  "author": "torbenm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/torbenm/ng2-currency/issues"
+  },
+  "homepage": "https://github.com/torbenm/ng2-currency#readme",
+  "dependencies": {
+    "@angular/core": "^5.0.3",
+    "rxjs": "^5.5.2",
+    "standard-version": "^4.2.0",
+    "typescript": "^2.6.2",
+    "zone.js": "^0.8.18"
+  }
 }
