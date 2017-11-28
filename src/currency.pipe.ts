@@ -6,6 +6,24 @@ import { isString } from './util';
 @Pipe({ name: 'currency' })
 export class CurrencyPipe implements PipeTransform {
 
+    /**
+     * Appends or prepends the currency symbol to the value and formats it 
+     * to include thousands separators and the defined number of fractions.
+     * 
+     * Example:
+     * ```
+     *  {{ 1234.12312 | currency:'€':'right':2:' '}}
+     * ```
+     * will output
+     * ```
+     * 1,234.12 €
+     * ```
+     * @param value The amount
+     * @param symbol The symbol for the currency, e.g. €
+     * @param side The side, either 'left' or 'right'
+     * @param fractionSize The number of digits after the decimal point
+     * @param gap The characters between the value and the currency symbol.
+     */
     public transform(value: number | string,
         symbol = '$',
         side = CurrencySymbolSide.LEFT,
