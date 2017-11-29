@@ -1,0 +1,28 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #fefefe !important;
+    font-size: 20px;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    padding: 0;
+    height: 100%;
+    display: block;
+}
+
+input {
+    border: 0;
+    border-bottom: 2px solid #999;
+}
+
+
+input:hover, input:focus, input:active {
+    outline: none;
+    border-bottom: 2px solid #6daa65;
+}
+/*# sourceMappingURL=styles.adf5a9c82fa205611f9a.css.map*/
