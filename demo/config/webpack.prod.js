@@ -10,8 +10,8 @@ module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
 
   output: {
-    path: helpers.root('dist'),
-    publicPath: '/',
+    path: helpers.root('gh-pages'),
+    publicPath: '/ng2-currency/',
     filename: '[name].[hash].js',
     chunkFilename: '[id].[hash].chunk.js'
   },
