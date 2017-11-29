@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/torbenm/ng2-currency/compare/v0.2.1...v0.3.0) (2017-11-29)
+
+
+### Bug Fixes
+
+* **input:** adjust number of visible fractions on fractiosize change ([4f630f0](https://github.com/torbenm/ng2-currency/commit/4f630f0))
+
+
+### Features
+
+* **input:** Allow to add class to input ([699ae02](https://github.com/torbenm/ng2-currency/commit/699ae02))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/torbenm/ng2-currency/compare/v0.2.0...v0.2.1) (2017-11-29)
 
