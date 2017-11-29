@@ -58,9 +58,18 @@ export class CurrencyInputComponent implements OnInit {
         }
     }
     @Input() symbol: string;
-    @Input() fractionSize: number = 2;
+    private fractionSize: number = 2;
+
+    @Input('fractionSize') set setFractionSize(size: number){
+        this.fractionSize = size;
+        if(!this.isFocused) {
+            this.inputField.nativeElement.value = this.transformNumber(this.inputField.nativeElement.value);
+            this.onChange();
+        }
+    }
+
     @Input() side: CurrencySymbolSide = CurrencySymbolSide.LEFT; 
-    @Input() inputClass: string = "";
+    @Input() inputClass: string = '';
 
     // -- outputs
     @Output() valueChange = new EventEmitter<number>();
