@@ -1,4 +1,5 @@
 import { isNumeric } from "./util";
+import { isString } from "util";
 
 /**
  * Removes all seperators from a given value.
@@ -51,8 +52,8 @@ export function parseString(value: string, separator: string = ','): number {
  * @param value The value to parse
  * @param separator The thousands separator
  */
-export function safeParseString(value: string, separator: string = ','): number {
-    let number = parseString(value, separator);
+export function safeParseString(value: string | number, separator: string = ','): number {
+    let number = isString(value) ? parseString(value, separator) : value;
     return isNumeric(number) ? number : 0;
 }
 
@@ -80,4 +81,13 @@ export function replaceSeparators(value: string, customDecimalPoint: string = ',
  */
 export function undoCustomDecimalPoint(value: string, customDecimalPoint: string = ','): string {
     return value.replace(new RegExp(customDecimalPoint, 'g'), '.');
+}
+
+/**
+ * Removes all unwanted fractions from a number
+ * @param value The value to remove fractions from
+ * @param fractionSize The number of allowed fractions
+ */
+export function frac(value: number, fractionSize:number = 2) {
+    return parseFloat(value.toFixed(fractionSize));
 }

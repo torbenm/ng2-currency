@@ -32,6 +32,7 @@ export class CurrencyPipe implements PipeTransform {
 
         let numberValue: number = isString(value) ? safeParseString(<string>value) : <number>value;
         let stringValue = addThousandsSeparator(numberValue.toFixed(fractionSize));
+        console.log(stringValue);
         return this.embeddInCurrencySymbol(stringValue, symbol, side, gap);
     }
 
