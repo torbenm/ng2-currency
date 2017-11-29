@@ -8,6 +8,7 @@ import { isNumeric } from './util';
     template: `
         <input  #input 
                 class="currency-input"
+                [ngClass]="inputClass"
                 (keyup)="handleKeyUp($event)"
                 (keypress)="handleKeyPress($event)"
                 (focus)="focus($event)"
@@ -59,6 +60,7 @@ export class CurrencyInputComponent implements OnInit {
     @Input() symbol: string;
     @Input() fractionSize: number = 2;
     @Input() side: CurrencySymbolSide = CurrencySymbolSide.LEFT; 
+    @Input() inputClass: string = "";
 
     // -- outputs
     @Output() valueChange = new EventEmitter<number>();
