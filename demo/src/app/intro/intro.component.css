@@ -1,0 +1,26 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.example {
+    margin-top: 50px;
+}
+
+div.main {
+    text-align: center;
+}
+
+div.github {
+    margin-top: 10px;
+}
+
+h1 {
+    color: #6daa65;
+}
+
+h1, div.main, div.subtitle {
+    font-family: "Roboto Mono", monospace;
+}

@@ -2,6 +2,8 @@
 
 Directives that support currencies.
 
+Check out the demo: https://torbenm.github.io/ng2-currency/
+
 ## Currency Pipe
 
 ### Usage

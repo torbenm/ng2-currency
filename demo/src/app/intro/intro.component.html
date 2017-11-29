@@ -1,0 +1,31 @@
+<section>
+    <div class="main">
+        <div class="github">
+            <a class="github-button" href="https://github.com/torbenm/ng2-currency" data-size="large" data-show-count="true" aria-label="Star torbenm/ng2-currency on GitHub">Star</a>       
+        </div>
+        <h1>ng2-currency</h1>
+
+        <div class="example">
+            <currency-input [(value)]="currencyValue" 
+                            [symbol]="currencySymbol"
+                            [side]="currencySide"
+                            [fractionSize]="fractionSize">
+            </currency-input> <br>
+
+            Formatted value: {{ currencyValue | currency:currencySymbol:currencySide:fractionSize}} <br>
+            <b>Model value:</b> {{ currencyValue }}
+
+            <p style="margin-top: 80px;">
+                Options:<br>
+                <select [(ngModel)]="currencySide">
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                </select>
+                <input [(ngModel)]="currencySymbol" style="width: 3em; text-align:center;">
+                <input [(ngModel)]="fractionSize" style="width: 3em; text-align:center;">
+            </p>
+
+        </div>
+
+    </div>
+</section>
