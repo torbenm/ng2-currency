@@ -1,6 +1,6 @@
 import { CurrencySymbolSide } from './currency.config';
 import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, HostBinding } from '@angular/core';
-import { addThousandsSeparator, safeParseString } from './currency.util';
+import { addThousandsSeparator, safeParseString, frac } from './currency.util';
 import { isNumeric } from './util';
 
 @Component({
@@ -81,6 +81,9 @@ export class CurrencyInputComponent implements OnInit {
     // -- public methods
     public ngOnInit(){}
 
+    /**
+     * Puts the focus on the input.
+     */
     public select() {
         this.inputField.nativeElement.select();
     }
@@ -88,32 +91,32 @@ export class CurrencyInputComponent implements OnInit {
     // -- private methods
 
 
-    private handleKeyPress(event) {
+    private handleKeyPress(event: any) {
         this.onKeyPress.emit(event);
         return isNumeric(event.key) ||
             (event.key === '.' && this.inputField.nativeElement.value.indexOf('.') === -1);
     }
 
-    private handleKeyUp(event) {
+    private handleKeyUp(event: any) {
         this.onKeyUp.emit(event);
         this.onChange();
     }
 
     private onChange() {
-        let newParsedValue = safeParseString(this.inputField.nativeElement.value);
+        let newParsedValue = frac(safeParseString(this.inputField.nativeElement.value), this.fractionSize);
         if(newParsedValue != this.parsedValue) {
             this.valueChange.emit(newParsedValue);
             this.parsedValue = newParsedValue;
         }
     }
 
-    private focus(event){
+    private focus(event: any){
         this.isFocused = true;
         this.inputField.nativeElement.value = safeParseString(this.inputField.nativeElement.value);
         this.onFocus.emit(event);
     }
 
-    private blur(event) {
+    private blur(event: any) {
         this.isFocused = false;
         this.inputField.nativeElement.value =this.transformNumber(this.inputField.nativeElement.value);
         this.onBlur.emit(event);        
