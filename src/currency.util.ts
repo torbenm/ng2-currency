@@ -58,32 +58,6 @@ export function safeParseString(value: string | number, separator: string = ',')
 }
 
 /**
- * Replaces the decimal point with a custom value.
- * 
- * Example:
- * `100.123 => 100,123``
- *
- * @param value The value to replace the decimal point with the custom decimal point
- * @param customDecimalPoint The custom decimal point
- */
-export function replaceSeparators(value: string, customDecimalPoint: string = ','): string {
-    return value.replace(new RegExp('.', 'g'), customDecimalPoint);
-}
-
-/**
- * Removes the custom decimal point and uses the standard decimal point.
- * 
- * Example:
- * `100,123 => 100.123``
- *
- * @param value The value to remove the custom decimal point from
- * @param customDecimalPoint The custom decimal point
- */
-export function undoCustomDecimalPoint(value: string, customDecimalPoint: string = ','): string {
-    return value.replace(new RegExp(customDecimalPoint, 'g'), '.');
-}
-
-/**
  * Removes all unwanted fractions from a number
  * @param value The value to remove fractions from
  * @param fractionSize The number of allowed fractions
