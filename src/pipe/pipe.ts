@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CurrencySymbolSide } from './currency.config';
-import { removeThousandsSeperator, addThousandsSeparator, safeParseString } from './currency.util';
-import { isString } from './util';
+import { CurrencySymbolSide } from '../model';
+import { removeThousandsSeperator, addThousandsSeparator, safeParseString, isString } from '../utils';
 
 @Pipe({ name: 'currency' })
 export class CurrencyPipe implements PipeTransform {

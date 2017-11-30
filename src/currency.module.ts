@@ -1,7 +1,8 @@
-import { CurrencyPipe } from './currency.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CurrencyInputComponent } from './currency.input.component';
+
+import { CurrencyInputComponent } from './input';
+import { CurrencyPipe } from './pipe';
 
 let publicComponents = [
     CurrencyPipe,

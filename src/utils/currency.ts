@@ -1,5 +1,4 @@
-import { isNumeric } from "./util";
-import { isString } from "util";
+import { isString,isNumeric } from './common';
 
 /**
  * Removes all seperators from a given value.
@@ -53,7 +52,7 @@ export function parseString(value: string, separator: string = ','): number {
  * @param separator The thousands separator
  */
 export function safeParseString(value: string | number, separator: string = ','): number {
-    let number = isString(value) ? parseString(value, separator) : value;
+    let number = isString(value) ? parseString(<string>value, separator) : <number>value;
     return isNumeric(number) ? number : 0;
 }
 

@@ -1,0 +1,8 @@
+<input #input 
+        class="currency-input" 
+        [ngClass]="inputClass" 
+        (keyup)="handleKeyUp($event)" 
+        (keypress)="handleKeyPress($event)"
+        (focus)="focus($event)" 
+        (blur)="blur($event)" />
+<span class="currency-input-symbol currency-input-symbol-right">{{ symbol }}</span>

@@ -1,52 +1,41 @@
-import { CurrencySymbolSide } from './currency.config';
 import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, HostBinding } from '@angular/core';
-import { addThousandsSeparator, safeParseString, frac } from './currency.util';
-import { isNumeric } from './util';
+
+import { CurrencySymbolSide } from '../model';
+import { addThousandsSeparator, safeParseString, isNumeric, frac } from '../utils';
 
 @Component({
     selector: 'currency-input',
-    template: `
-        <input  #input 
-                class="currency-input"
-                [ngClass]="inputClass"
-                (keyup)="handleKeyUp($event)"
-                (keypress)="handleKeyPress($event)"
-                (focus)="focus($event)"
-                (blur)="blur($event)"/>
-        <span class="currency-input-symbol currency-input-symbol-right">{{ symbol }}</span>
-    `,
-    styles: [
-        `:host {
-            display: flex;
-            position: relative;
-            align-items: center;
-        }`,
-        `.currency-input {
-            width: 100%;
-            font-size: inherit;
-            font-family: inherit;
-        }`,
-        `.currency-input-symbol {
-            font-size: inherit;
-            font-family: inherit;
-        }`,
-        `:host.currency-left span {
-            position: absolute;
-            left: 0.3em;   
-        }`,
-        `:host.currency-right span {
-            position: absolute;
-            right: 0.3em;   
-        }`,
-        `:host.currency-left input {
-            text-align: left;
-            padding-left: 1em;
-        }`,
-        `:host.currency-right input {
-            text-align: right;
-            padding-right: 1em;  
-        }`
-    ]
+    templateUrl: 'input.component.html',
+    styles: [ `:host {
+        display: flex;
+        position: relative;
+        align-items: center;
+    }
+    .currency-input {
+        width: 100%;
+        font-size: inherit;
+        font-family: inherit;
+    }
+    .currency-input-symbol {
+        font-size: inherit;
+        font-family: inherit;
+    }
+    :host.currency-left span {
+        position: absolute;
+        left: 0.3em;   
+    }
+    :host.currency-right span {
+        position: absolute;
+        right: 0.3em;   
+    }
+    :host.currency-left input {
+        text-align: left;
+        padding-left: 1em;
+    }
+    :host.currency-right input {
+        text-align: right;
+        padding-right: 1em;  
+    }` ]
 })
 export class CurrencyInputComponent implements OnInit {
 
