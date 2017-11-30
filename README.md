@@ -18,7 +18,7 @@ Then import it in your module:
 
 ```typescript
 ...
-import { CurrencyModule } from 'n2-currency';
+import { CurrencyModule } from 'ng2-currency';
 
 @NgModule({
     imports: [
