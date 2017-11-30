@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, Input, Output, ViewChild, HostBinding, OnChanges, EventEmitter, ElementRef, SimpleChanges, OnInit } from '@angular/core';
 
 import { CurrencySymbolSide } from '../model';
-import { addThousandsSeparator, safeParseString, isNumeric, frac } from '../utils';
+import { frac, isString, safeParseString, addThousandsSeparator, isNumeric } from '../utils';
 
 @Component({
     selector: 'currency-input',
     templateUrl: 'input.component.html',
-    styles: [ `:host {
+    styles: [`:host {
         display: flex;
         position: relative;
         align-items: center;
@@ -37,49 +37,47 @@ import { addThousandsSeparator, safeParseString, isNumeric, frac } from '../util
         padding-right: 1em;  
     }` ]
 })
-export class CurrencyInputComponent implements OnInit {
+export class CurrencyInputComponent implements OnChanges, OnInit {
 
- 
-    // -- inputs
-    @Input('value') set value(newValue: number) {
-        if(!this.isFocused) {
-            this.inputField.nativeElement.value = this.transformNumber(newValue);
-        }
-    }
-    @Input() symbol: string;
-    private fractionSize: number = 2;
-
-    @Input('fractionSize') set setFractionSize(size: number){
-        this.fractionSize = size;
-        if(!this.isFocused) {
-            this.inputField.nativeElement.value = this.transformNumber(this.inputField.nativeElement.value);
-            this.onChange();
-        }
-    }
-
-    @Input() side: CurrencySymbolSide = CurrencySymbolSide.LEFT; 
+    // -- public variables
+    @Input('value') model: number;
+    @Input() symbol: string = '€';
+    @Input() fractionSize: number = 2;
+    @Input() side: CurrencySymbolSide = CurrencySymbolSide.LEFT;
     @Input() inputClass: string = '';
 
-    // -- outputs
+    // -- event emitters
+
     @Output() valueChange = new EventEmitter<number>();
     @Output('focus') onFocus = new EventEmitter<any>();
     @Output('blur') onBlur = new EventEmitter<any>();
     @Output('keypress') onKeyPress = new EventEmitter<any>();
     @Output('keyup') onKeyUp = new EventEmitter<any>();
 
-    @ViewChild('input') inputField: ElementRef;   
+    // -- view bindings
+
+    @ViewChild('input') inputField: ElementRef;
     @HostBinding('class') get sideClass() {
         return `currency-${this.side.toString()}`
-    } 
+    }
 
     // -- private variables
-    private isFocused = false;
-    private parsedValue: number;
-
-    constructor(){}
+    private hasFocus = false;
 
     // -- public methods
-    public ngOnInit(){}
+
+    constructor() { }
+
+    public ngOnChanges(changes: SimpleChanges) {
+        if (!this.hasFocus && ('model' in changes || 'fractionSize' in changes)) {
+            this.updateModel(this.model);
+            this.displayFormattedModel();
+        }
+    }
+
+    public ngOnInit() {
+        this.displayFormattedModel();
+    }
 
     /**
      * Puts the focus on the input.
@@ -89,7 +87,28 @@ export class CurrencyInputComponent implements OnInit {
     }
 
     // -- private methods
+    private format(model: number): string {
+        return addThousandsSeparator(model.toFixed(this.fractionSize));
+    }
 
+    private updateModel(value: number | string) {
+        value = isString(value) ? safeParseString(<string>value) : <number>value;
+        let newModel = frac(value, this.fractionSize);
+        if (newModel !== this.model) {
+            this.valueChange.emit(newModel);
+            this.model = newModel;
+        }
+    }
+
+    private displayFormattedModel() {
+        this.inputField.nativeElement.value = this.format(this.model);
+    }
+
+    // -- event handlers
+    private handleKeyUp(event: any) {
+        this.updateModel(this.inputField.nativeElement.value);
+        this.onKeyUp.emit(event);
+    }
 
     private handleKeyPress(event: any) {
         this.onKeyPress.emit(event);
@@ -97,32 +116,15 @@ export class CurrencyInputComponent implements OnInit {
             (event.key === '.' && this.inputField.nativeElement.value.indexOf('.') === -1);
     }
 
-    private handleKeyUp(event: any) {
-        this.onKeyUp.emit(event);
-        this.onChange();
-    }
-
-    private onChange() {
-        let newParsedValue = frac(safeParseString(this.inputField.nativeElement.value), this.fractionSize);
-        if(newParsedValue != this.parsedValue) {
-            this.valueChange.emit(newParsedValue);
-            this.parsedValue = newParsedValue;
-        }
-    }
-
-    private focus(event: any){
-        this.isFocused = true;
-        this.inputField.nativeElement.value = safeParseString(this.inputField.nativeElement.value);
-        this.onFocus.emit(event);
-    }
-
     private blur(event: any) {
-        this.isFocused = false;
-        this.inputField.nativeElement.value =this.transformNumber(this.inputField.nativeElement.value);
-        this.onBlur.emit(event);        
+        this.hasFocus = false;
+        this.displayFormattedModel();
+        this.onBlur.emit(event);
     }
 
-    private transformNumber(value: any) {
-        return addThousandsSeparator(safeParseString(value).toFixed(this.fractionSize));
+    private focus(event: any) {
+        this.hasFocus = true;
+        this.inputField.nativeElement.value = this.model;
+        this.onFocus.emit(event);
     }
 }
