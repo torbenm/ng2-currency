@@ -1,6 +1,6 @@
 {
   "name": "ng2-currency",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Angular2+ directives for currencies",
   "main": "index.ts",
   "scripts": {
