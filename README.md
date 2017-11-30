@@ -51,7 +51,7 @@ Allows you to edit the value of a currency.
 ```
 The following inputs:
 
-```
+
 - **value**         The value to display
 - **symbol**        The symbol for the currency, e.g. `'€'`, `'$'`, etc (default: '€').
 - **side**          The side of the value to display the currency, can be `'left'` or `'right'` (default: `'left'`)
@@ -106,7 +106,6 @@ Allows you to dynamically jump between editing and viewing a value.
 ```
 The following inputs:
 
-```
 - **value**         The value to display
 - **symbol**        The symbol for the currency, e.g. `'€'`, `'$'`, etc (default: '€').
 - **side**          The side of the value to display the currency, can be `'left'` or `'right'` (default: `'left'`)
