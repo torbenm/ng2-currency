@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/torbenm/ng2-currency/issues"
   },
-  "homepage": "https://github.com/torbenm/ng2-currency#readme",
+  "homepage": "https://torbenm.github.io/ng2-currency/",
   "devDependencies": {
     "@angular/common": "5.0.3",
     "@angular/compiler": "5.0.3",
