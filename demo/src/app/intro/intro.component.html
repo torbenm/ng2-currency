@@ -13,7 +13,14 @@
             </currency-input> <br>
 
             Formatted value: {{ currencyValue | currency:currencySymbol:currencySide:fractionSize}} <br>
-            <b>Model value:</b> {{ currencyValue }}
+            <b>Model value:</b> {{ currencyValue }} <br><br>
+            <span *ngIf="!editing">Double click on this value:</span>
+            <span *ngIf="editing">Press ESC to cancel, ENTER to save:</span>
+            <currency-edit [(value)]="currencyValue" 
+                    [symbol]="currencySymbol"
+                    [side]="currencySide"
+                    [(editing)]="editing"
+                    [fractionSize]="fractionSize"></currency-edit>
 
             <p style="margin-top: 80px;">
                 Options:<br>

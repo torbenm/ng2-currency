@@ -1,0 +1,16 @@
+<span *ngIf="!editing" (dblclick)="handleDoubleClick()">
+    {{ value | currency:symbol:side:fractionSize:gap }}
+</span>
+<currency-input
+    #input
+    *ngIf="editing"
+    [(value)]="value"
+    [symbol]="symbol"
+    [fractionSize]="fractionSize"
+    [side]="side"
+    (valueChange)="forward('valueChange', $event)"
+    (keyup)="handleKeyUp($event)"
+    (keypress)="forward('onKeyUp', $event)"
+    (blur)="forward('onBlur', $event)"
+    (focus)="forward('onFocus', $event)">
+</currency-input>

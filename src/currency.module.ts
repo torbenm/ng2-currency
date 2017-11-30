@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { CurrencyInputComponent } from './input';
 import { CurrencyPipe } from './pipe';
+import { CurrencyEditComponent } from './edit';
 
 let publicComponents = [
     CurrencyPipe,
-    CurrencyInputComponent
+    CurrencyInputComponent,
+    CurrencyEditComponent
 ];
 
 @NgModule({

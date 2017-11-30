@@ -32,6 +32,8 @@ export class AppModule{ }
 
 ## Currency Input
 
+Allows you to edit the value of a currency.
+
 ### Usage
 ```html
 <currency-input 
@@ -75,6 +77,62 @@ The following public methods:
 ```
 
 Here, the value of `inputClass` makes it work with the styling of bootstrap.
+
+
+## Currency Edit
+
+Allows you to dynamically jump between editing and viewing a value.
+
+### Usage
+```html
+<currency-edit 
+    [(editing)]="editing"
+    [(value)]="value" 
+    [symbol]="symbol" 
+    [fractionSize]="fractionSize" 
+    [side]="side" 
+    [gap]="gap"
+    [inputClass]="inputClass"
+    [autoEnabled]="autoEnabled"
+    [saveKey]="saveKey"
+    [cancelKey]="cancelKey"
+    (keyup)="onKeyUp($event)"
+    (keypress)="onKeyPress($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    (save)="save()"
+    >
+</currency-input>
+```
+The following inputs:
+
+```
+- **value**         The value to display
+- **symbol**        The symbol for the currency, e.g. `'€'`, `'$'`, etc (default: '€').
+- **side**          The side of the value to display the currency, can be `'left'` or `'right'` (default: `'left'`)
+- **fractionSize**  The number of digits to display after the decimal point (default: `2`)
+- **inputClass**    The class to add to the `<input>`. (default: `''`)
+- **editing**       Whether or not the editing mode is active (default: `false`)
+- **gap**           For viewing the value. The gap between the value and the currency symbol (default: `' '`)
+- **autoEnabled**   Whether automatic jumping between editing and viewing through double click + keyboard shortcuts is enabled (default: `true`)
+- **saveKey**       The key to use for automatic saving (default: `'enter'`)
+- **cancelKey**       The key to use for automatic saving (default: `'escape'`)
+
+The following outputs/events:
+
+- **value**         Fired on value change of the input
+- **keyup**         Fired on key up in the input
+- **keypress**      Fired on key pres in the input
+- **blur**          Fired on loss of focus of the input
+- **focus**         Fired on focus of the input
+- **save**          Fired when editing was confirmed
+- **cancel**        Fired when editing was canceled
+
+The following public methods:
+
+- `save()`          Confirms the editing
+- `cancel()`        Cancels the editing
+
 
 
 ## Currency Pipe
