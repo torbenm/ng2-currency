@@ -34,8 +34,19 @@ export class AppModule{ }
 
 ### Usage
 ```html
-<currency-input [(value)]="value" [symbol]="symbol" [fractionSize]="fractionSize" [side]="side" [inputClass]="inputClass">
-
+<currency-input 
+    [(value)]="value" 
+    [symbol]="symbol" 
+    [fractionSize]="fractionSize" 
+    [side]="side" 
+    [inputClass]="inputClass"
+    (keyup)="onKeyUp($event)"
+    (keypress)="onKeyPress($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    >
+</currency-input>
+```
 The following inputs:
 
 ```
@@ -43,7 +54,6 @@ The following inputs:
 - **symbol**        The symbol for the currency, e.g. `'€'`, `'$'`, etc (default: '€').
 - **side**          The side of the value to display the currency, can be `'left'` or `'right'` (default: `'left'`)
 - **fractionSize**  The number of digits to display after the decimal point (default: `2`)
-- **gap**           The characters to display between the value and the currency symbol (default: `' '`)
 - **inputClass**    The class to add to the `<input>`. (default: '')
 
 The following outputs/events:
