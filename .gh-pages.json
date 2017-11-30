@@ -5,5 +5,5 @@
     "remote": "https://github.com/torbenm/ng2-currency.git",
     "branch": "gh-pages",
     "build": "npm run demo:prod",
-    "commit": "Documentation for ${tag-verbose}"
+    "commit": "Documentation for ${tags-verbose}"
 }

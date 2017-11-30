@@ -5,4 +5,4 @@ cd "$(dirname $0)"
 npm run release
 git push --follow-tags origin master
 npm publish
-bash demo/gh-publish.sh
+node ./node_modules/publish-github-pages/bin/gh-pages.js publish
